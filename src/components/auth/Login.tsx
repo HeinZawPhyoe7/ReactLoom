@@ -34,6 +34,7 @@ const Login = () => {
       console.log("Login successful:", response.data);
       if (response.data.access_token) {
         localStorage.setItem("accessToken", response.data.access_token);
+        navgite("/home");
       }
     } catch (error) {
       console.error("Login failed:", error);
