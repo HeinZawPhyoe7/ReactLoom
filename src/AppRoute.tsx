@@ -3,16 +3,18 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Navbar from "./components/navbar/Navbar";
 import Home from "./components/home/Home";
+import CreatePost from "./components/post/CreatePost";
 
 function AppRoute() {
   return (
     <BrowserRouter>
-    <Navbar/>
+      <Navbar />
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/home" element={<Home />} />
-      </Routes>  
+        <Route path="/create-post" element={<CreatePost />} />
+      </Routes>
     </BrowserRouter>
   );
 }

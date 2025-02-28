@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import DeletePost from "../post/DeletePost";
 
 const Home = () => {
-  const [posts, setPosts] = useState<any>([]);
+  const [posts, setPosts] = useState<any>();
   const accessToken = localStorage.getItem("accessToken");
 
   const fetchPosts = async () => {
@@ -26,20 +27,23 @@ const Home = () => {
   }, []);
 
   return (
-    <div className="bg-gray-200 min-h-screen">
+    <div className="bg-gray-200 min-h-screen pb-6">
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-6 pt-6">
         Posts
       </h1>
       <div className="max-w-4xl mx-auto grid grid-cols-4 gap-x-4 gap-y-6">
-        {posts.map((post: any) => (
+        {posts?.map((post: any) => (
           <div
             key={post.id}
             className="bg-white h-[350px] shadow-lg rounded-lg p-6"
           >
             {post.title && (
-              <h2 className="font-semibold text-gray-900 text-sm capitalize">
-                {post.title}
-              </h2>
+              <div className="flex justify-between">
+                <h2 className="font-semibold text-gray-900 text-sm capitalize">
+                  {post.title}
+                </h2>
+                <DeletePost postId={post.id} />
+              </div>
             )}
             {post.description && (
               <p className="text-gray-700 mt-2">{post.description}</p>
