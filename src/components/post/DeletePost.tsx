@@ -2,10 +2,17 @@ import { Trash2 } from "lucide-react";
 import axios from "axios";
 
 const DeletePost = ({ postId }: { postId: number }) => {
+  const accessToken = localStorage.getItem("accessToken");
+
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
-        `${import.meta.env.VITE_BACKEND_URL}/api/auth/delete-post/${postId}`
+        `${import.meta.env.VITE_BACKEND_URL}/api/auth/delete-post/${postId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
       );
       alert(response.data.message);
       if (response.data.message == "post is deleted") {

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Logout from "../auth/Logout";
 
 const Navbar = () => {
   return (
@@ -6,13 +7,16 @@ const Navbar = () => {
       <Link to="/home">Nav</Link>
       <div className="flex justify-end gap-6">
         <div className="hover:text-blue-500">
-          <Link to="/create-post">Creste Post</Link>
+          <Link to="/create-post">Create Post</Link>
         </div>
         <div className="hover:text-blue-500">
           <Link to="/login">Login</Link>
         </div>
         <div className="hover:text-blue-500">
           <Link to="/register">Register</Link>
+        </div>
+        <div className="hover:text-red-500">
+          <Logout/>
         </div>
       </div>
     </div>
